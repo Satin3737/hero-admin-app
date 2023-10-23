@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {addHero, heroesFetching, heroesFetchingError, setActiveFilter} from "../../actions";
+import {postHero} from "../../actions";
 import {useHttp} from "../../hooks/http.hook";
 import { v4 as uuidv4 } from 'uuid';
 import {useRef, useState} from "react";
@@ -14,15 +14,7 @@ const HeroesAddForm = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         const hero = {...formData, id: uuidv4()};
-
-        dispatch(heroesFetching());
-        request('http://localhost:3001/heroes', 'POST', JSON.stringify(hero))
-            .then(() => {
-                dispatch(addHero(hero));
-                dispatch(setActiveFilter(formData.element));
-                form.current.reset();
-            })
-            .catch(() => dispatch(heroesFetchingError()));
+        dispatch(postHero(request, hero, form, formData))
     };
 
     const onChange = (e) => {

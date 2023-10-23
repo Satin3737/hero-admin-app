@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {heroesFetching, heroesFetchingError, removeHero} from "../../actions";
+import {postRemoveHero} from "../../actions";
 import {useHttp} from "../../hooks/http.hook";
 
 const HeroesListItem = ({id, name, description, element}) => {
@@ -26,10 +26,7 @@ const HeroesListItem = ({id, name, description, element}) => {
     }
 
     const remove = (id) => {
-        dispatch(heroesFetching());
-        request(`http://localhost:3001/heroes/${id}`, 'DELETE')
-            .then(() => dispatch(removeHero(id)))
-            .catch(() => dispatch(heroesFetchingError()));
+        dispatch(postRemoveHero(request, id));
     }
 
     return (
