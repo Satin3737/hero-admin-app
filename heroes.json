@@ -11,6 +11,18 @@
       "description": "sda",
       "element": "fire",
       "id": "55a2c5ee-abba-4632-b05f-21ac9fa81576"
+    },
+    {
+      "name": "sdasda",
+      "element": "water",
+      "description": "asdadad",
+      "id": "5f786cb6-fd8f-4120-9278-00d08d80be2e"
+    },
+    {
+      "name": "dad",
+      "element": "wind",
+      "description": "adsadas",
+      "id": "19c6ff0f-3d36-4d66-8575-e3c2740a9c85"
     }
   ],
   "filters": [
