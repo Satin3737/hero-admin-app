@@ -1,28 +1,16 @@
 {
   "heroes": [
     {
-      "id": 1,
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
-      "element": "fire"
-    },
-    {
-      "name": "sadad",
-      "description": "sda",
+      "name": "asdd",
+      "description": "dadsad",
       "element": "fire",
-      "id": "55a2c5ee-abba-4632-b05f-21ac9fa81576"
+      "id": "53f5e199-b0f5-4487-b7e0-1874f8c8b757"
     },
     {
-      "name": "sdasda",
+      "name": "adas",
+      "description": "addas",
       "element": "water",
-      "description": "asdadad",
-      "id": "5f786cb6-fd8f-4120-9278-00d08d80be2e"
-    },
-    {
-      "name": "dad",
-      "element": "wind",
-      "description": "adsadas",
-      "id": "19c6ff0f-3d36-4d66-8575-e3c2740a9c85"
+      "id": "7463be3a-22c0-4752-88a0-64237b856009"
     }
   ],
   "filters": [

@@ -1,20 +1,22 @@
 import {useDispatch, useSelector} from "react-redux";
-import {postHero} from "../../actions";
-import {useHttp} from "../../hooks/http.hook";
 import { v4 as uuidv4 } from 'uuid';
 import {useRef, useState} from "react";
+import {createHero} from "../../store/slices/heroesSlice";
+import {setActiveFilter} from "../../store/slices/filtersSlice";
 
 const HeroesAddForm = () => {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({});
     const {filters} = useSelector(state => state.filters);
-    const {request} = useHttp();
     const form = useRef(null);
 
     const onSubmit = (e) => {
         e.preventDefault();
         const hero = {...formData, id: uuidv4()};
-        dispatch(postHero(request, hero, form, formData))
+        dispatch(createHero(hero)).then(() => {
+            dispatch(setActiveFilter(formData?.element));
+            form.current.reset();
+        });
     };
 
     const onChange = (e) => {

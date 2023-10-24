@@ -1,12 +1,9 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchFilters} from "../../actions";
-import {useHttp} from "../../hooks/http.hook";
-import {setActiveFilter} from "../../store/slices/filtersSlice";
+import {fetchFilters, setActiveFilter} from "../../store/slices/filtersSlice";
 
 const HeroesFilters = () => {
     const dispatch = useDispatch();
-    const {request} = useHttp();
     const {filters, activeFilter} = useSelector(state => state.filters);
 
     const setFilter = (e) => {
@@ -14,8 +11,8 @@ const HeroesFilters = () => {
     }
 
     useEffect(() => {
-        dispatch(fetchFilters(request));
-    }, [dispatch, request]);
+        dispatch(fetchFilters());
+    }, [dispatch]);
 
     return (
         <div className="card shadow-lg mt-4">

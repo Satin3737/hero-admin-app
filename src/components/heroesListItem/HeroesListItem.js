@@ -1,10 +1,8 @@
 import {useDispatch} from "react-redux";
-import {postRemoveHero} from "../../actions";
-import {useHttp} from "../../hooks/http.hook";
+import {removeHero, setDeletedHero} from "../../store/slices/heroesSlice";
 
 const HeroesListItem = ({id, name, description, element}) => {
     const dispatch = useDispatch();
-    const {request} = useHttp();
 
     let elementClassName;
 
@@ -26,7 +24,8 @@ const HeroesListItem = ({id, name, description, element}) => {
     }
 
     const remove = (id) => {
-        dispatch(postRemoveHero(request, id));
+        dispatch(setDeletedHero(id));
+        dispatch(removeHero(id));
     }
 
     return (
