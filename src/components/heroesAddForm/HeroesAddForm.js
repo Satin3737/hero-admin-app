@@ -1,13 +1,14 @@
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import {useRef, useState} from "react";
 import {createHero} from "../../store/slices/heroesSlice";
-import {setActiveFilter} from "../../store/slices/filtersSlice";
+import {selectAll, setActiveFilter} from "../../store/slices/filtersSlice";
+import store from "../../store";
 
 const HeroesAddForm = () => {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({});
-    const {filters} = useSelector(state => state.filters);
+    const filters = selectAll(store.getState());
     const form = useRef(null);
 
     const onSubmit = (e) => {

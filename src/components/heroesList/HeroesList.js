@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
-import {fetchHeroes} from "../../store/slices/heroesSlice";
+import {fetchHeroes, selectAll} from "../../store/slices/heroesSlice";
+import store from "../../store";
 
 const HeroesList = () => {
-    const {heroes, heroesLoadingStatus} = useSelector(state => state.heroes);
+    const {heroesLoadingStatus} = useSelector(state => state.heroes);
+    const heroes = selectAll(store.getState());
     const {activeFilter} = useSelector(state => state.filters);
     const dispatch = useDispatch();
 
