@@ -1,23 +1,19 @@
-import {useDispatch} from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import {useRef, useState} from "react";
-import {createHero} from "../../store/slices/heroesSlice";
-import {selectAll, setActiveFilter} from "../../store/slices/filtersSlice";
-import store from "../../store";
+import {useCreateHeroMutation} from "../../api/heroesApiSlice";
+import {useGetFiltersQuery} from "../../api/filtersApiSlice";
 
 const HeroesAddForm = () => {
-    const dispatch = useDispatch();
+    const [createHero] = useCreateHeroMutation();
     const [formData, setFormData] = useState({});
-    const filters = selectAll(store.getState());
+    const {data: filters = []} = useGetFiltersQuery();
     const form = useRef(null);
 
     const onSubmit = (e) => {
         e.preventDefault();
         const hero = {...formData, id: uuidv4()};
-        dispatch(createHero(hero)).then(() => {
-            dispatch(setActiveFilter(formData?.element));
-            form.current.reset();
-        });
+        createHero(hero).unwrap();
+        form.current.reset();
     };
 
     const onChange = (e) => {

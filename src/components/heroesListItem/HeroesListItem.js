@@ -1,9 +1,7 @@
-import {useDispatch} from "react-redux";
-import {removeHero, setDeletedHero} from "../../store/slices/heroesSlice";
+import {useDeleteHeroMutation} from "../../api/heroesApiSlice";
 
 const HeroesListItem = ({id, name, description, element}) => {
-    const dispatch = useDispatch();
-
+    const [deleteHero] = useDeleteHeroMutation();
     let elementClassName;
 
     switch (element) {
@@ -24,8 +22,7 @@ const HeroesListItem = ({id, name, description, element}) => {
     }
 
     const remove = (id) => {
-        dispatch(setDeletedHero(id));
-        dispatch(removeHero(id));
+        deleteHero(id);
     }
 
     return (
